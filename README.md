@@ -1,13 +1,34 @@
-sk
-django-todo
-===========
-TODO-application
+# TODO
 
-ubuntu-xeniai,
-Python3.6.6,
+task management app
 
-packages:
-Django 2.2.1,
-pytz==2019.1,
-sqlparse==0.3.0,
+##Description
+
+Task management application using Django.
+lists,details,edits and 3 views.
+
+##Features
+- lists view
+- detail view
+- edit view
+
+##Requirement
+
+-Python3
+-Django2.2.1
+-pytz2019.1
+-sqlparse0.3.0
+
+##Usage
+
+Undecided
+
+##Installation
+
+Undecided
+
+
+##Anything Else
+
+Undecided
 
