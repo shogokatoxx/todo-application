@@ -2,33 +2,33 @@
 
 task management app
 
-##Description
+## Description
 
 Task management application using Django.
 lists,details,edits and 3 views.
 
-##Features
+## Features
 - lists view
 - detail view
 - edit view
 
-##Requirement
+## Requirement
 
 -Python3
 -Django2.2.1
 -pytz2019.1
 -sqlparse0.3.0
 
-##Usage
+## Usage
 
 Undecided
 
-##Installation
+## Installation
 
 Undecided
 
 
-##Anything Else
+## Anything Else
 
 Undecided
 
