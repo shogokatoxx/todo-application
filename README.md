@@ -14,10 +14,10 @@ lists,details,edits and 3 views.
 
 ## Requirement
 
--Python3
--Django2.2.1
--pytz2019.1
--sqlparse0.3.0
+- Python3
+- Django2.2.1
+- pytz2019.1
+- sqlparse0.3.0
 
 ## Usage
 
