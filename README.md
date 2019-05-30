@@ -32,3 +32,17 @@ Undecided
 
 Undecided
 
+## Docker
+
+### Dockerfileでやってること
+* python, pipが入ってる環境にpipenvをいれる
+* 作業ディレクトリとPYTHONPATHの設定
+* pipenvを使って依存するパッケージのインストール
+
+### docker-composeでやってること
+* port 8000をホスト側の8000にマウント
+* コンテナ起動時にstart.shを実行
+
+### start.shでやってること
+* マイグレーション
+* 開発用サーバの起動
