@@ -14,9 +14,8 @@ lists,details,edits and 3 views.
 
 ## Requirement
 
-- Python3
+- Python3.6
 - Django2.2.1
-- pytz2019.1
 - sqlparse0.3.0
 
 ## Usage
