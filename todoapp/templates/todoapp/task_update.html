@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>更新</title>
+  </head>
+  <body>
+    <h1>更新</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p %}}
+      <input type="submit" value="保存">
+    </form>
+  </body>
+</html>

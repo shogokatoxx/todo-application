@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>詳細ビュー</title>
+  </head>
+  <body>
+    <h1>詳細ビュー</h1>
+    <p>{{ object.title }}</p>
+    <p>{{ object.content }}</p>
+    <p>{{ object.created_at }}</p>
+    <p>{% if objects.conditions == 1 %}新規{% elif objects.conditions == 2 %}作業中{% else %}完了{% endif %}</p>
+    <a href="{% url 'todoapp:update' pk=object.pk %}">更新</a>
+  </body>
+</html>

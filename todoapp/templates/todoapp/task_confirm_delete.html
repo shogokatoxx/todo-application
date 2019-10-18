@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>更新</title>
+  </head>
+  <body>
+    <h1>更新</h1>
+    <p>{{ object.title }}</p>
+    <form method="post">
+      {% csrf_token %}
+      <input type="submit" value="削除">
+    </form>
+  </body>
+</html>
