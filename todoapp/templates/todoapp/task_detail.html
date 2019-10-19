@@ -2,14 +2,159 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>詳細ビュー</title>
+    <title>詳細ページ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+      body{
+        color:white;
+        /* 以下2つはよくダークモードで使われているフォント */
+        /* background-color:#282c2f; */
+        background-color:#1e1e1e;
+        font-size:13px;
+        border:0.5px;
+        font-family:arial;
+      }
+      h2{
+        color:#1ab5ff;
+        font-family:sans-serif;
+      }
+      /* headerとfooterはpositionを固める */
+      .title{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:50px;
+      }
+      .task{
+        padding-top:50px;
+      }
+      footer small{
+        /* border-top:1px solid #bbbbbb; */
+        padding-top:10px;
+        padding-bottom:5px;
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        background-color:#282c2f;
+      }
+      footer{
+        text-align:center;
+      }
+      /* detailCSS */
+      #detail .detail-font{
+        font-size:20px;
+        font-family:arial;
+      }
+      #detail h3{
+        font-family:sans-serif;
+      }
+      #detail .shortcut-title{
+        font-size:15px;
+        font-family:fantasy;
+      }
+      #detail .shortcut-menu{
+        font-size:15px;
+      }
+      #detail .shortcut-menu li a{
+        color:#1ab5ff;
+        text-decoration:none;
+      }
+      #detail .task-title1{
+        color:#fff;
+      }
+      #detail .task-title2{
+        color:orange;
+      }
+      #detail .task-title3{
+        color:#1ab5ff;
+      }
+    </style>
   </head>
-  <body>
-    <h1>詳細ビュー</h1>
-    <p>{{ object.title }}</p>
-    <p>{{ object.content }}</p>
-    <p>{{ object.created_at }}</p>
-    <p>{% if objects.conditions == 1 %}新規{% elif objects.conditions == 2 %}作業中{% else %}完了{% endif %}</p>
-    <a href="{% url 'todoapp:update' pk=object.pk %}">更新</a>
+
+  <body id="detail">
+    <div id="main">
+
+      <!-- タイトル部分 -->
+      <div class="title">
+        <div class="row border-bottom border-dark">
+          <div class="col-sm-1">
+
+          </div>
+          <div class="col-sm-10">
+            <h2>タスク詳細</h1>
+          </div>
+          <div class="col-sm-1 mt-2">
+            <a href="#">➕</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- タスク一覧部分 -->
+      <div class="task mt-5">
+        <div class="row mt-3">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-9 border-bottom border-dark">
+            {% if object.conditions == 1 %}
+            <h3 class="task-title1">{{ object.title }}</h3>
+            {% elif object.conditions == 2 %}
+            <h3 class="task-title2">{{ object.title }}</h3>
+            {% elif object.conditions == 3 %}
+            <h3 class="task-title3">{{ object.title }}</h3>
+            {% endif %}
+          </div>
+          <div class="col-sm-1 border-bottom border-dark">
+            <!-- <a href="#">🗑</a> -->
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-5">
+            <p class="detail-font">
+            {{ object.content | linebreaksbr }}
+          </p>
+          </div>
+          <div class="col-sm-2"></div>
+          <div class="col-sm-2">
+            <p class="shortcut-title">ショートカットメニュー</p>
+            <ul class="shortcut-menu">
+              <li class="mt-1"><a href="#">編集</a></li>
+              <li class="mt-1"><a href="#">追加</a></li>
+              <li class="mt-1"><a href="#">削除</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-2"></div>
+          <div class="col-3">
+            <p>状態：{% if object.conditions == 1 %}新規{% elif object.conditions == 2 %}作業中{% else %}完了{% endif %}</p>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-3">
+            <p>作成日：{{ object.created_at }}</p>
+            <!-- <a href="{% url 'todoapp:update' pk=object.pk %}">更新</a> -->
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <small>(c)shogokatoxx</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
   </body>
 </html>

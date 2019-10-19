@@ -46,10 +46,14 @@
       .orange{
         color:orange;
       }
+      #list .task-title-link{
+        color:#fff;
+        text-decoration:none;
+      }
     </style>
   </head>
 
-  <body>
+  <body id="list">
     <div id="main">
 
       <!-- タイトル部分 -->
@@ -85,17 +89,19 @@
             <a href="#">🔵</a>
             {% endif %}
           </div>
+
           <div class="col-sm-9 border-bottom border-dark">
             {% if item.conditions == 1 %}
-            {{ item.title }} (新規)
+            <a href="{% url 'todoapp:detail' pk=item.pk %}" class="task-title-link">{{ item.title }} (新規)</a>
             {% endif %}
             {% if item.conditions == 2 %}
-            {{ item.title }}<span class="orange"> (!!!)</span>
+            <a href="{% url 'todoapp:detail' pk=item.pk %}" class="task-title-link">{{ item.title }}<span class="orange"> (!!!)</span></a>
             {% endif %}
             {% if item.conditions == 3 %}
-            {{ item.title }}
+            <a href="{% url 'todoapp:detail' pk=item.pk %}" class="task-title-link">{{ item.title }}</a>
             {% endif %}
           </div>
+
           <div class="col-sm-1 border-bottom border-dark">
             <a href="#">🗑</a>
           </div>
