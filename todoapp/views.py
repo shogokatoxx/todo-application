@@ -1,4 +1,4 @@
-# from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.contrib import messages
@@ -36,3 +36,19 @@ class Update(UpdateView):
 class Delete(DeleteView):
     model = Task
     success_url = '/'
+
+def delete(request,pk):
+    tasks = get_object_or_404(Task,pk=pk)
+    tasks.delete()
+    return redirect('todoapp:lists')
+
+def conditions_change(request,pk):
+    tasks = get_object_or_404(Task,pk=pk)
+    if tasks.conditions == 1:
+        tasks.conditions = 3
+    elif tasks.conditions == 2:
+        tasks.conditions = 3
+    elif tasks.conditions == 3:
+        tasks.conditions = 1
+    tasks.save()
+    return redirect('todoapp:lists')
