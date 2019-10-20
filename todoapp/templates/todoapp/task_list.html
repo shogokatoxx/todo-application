@@ -66,7 +66,7 @@
             <h2>タスク一覧</h1>
           </div>
           <div class="col-sm-1 mt-2">
-            <a href="#">➕</a>
+            <a href="{% url 'todoapp:create' %}">➕</a>
           </div>
         </div>
       </div>
@@ -74,10 +74,8 @@
       <!-- タスク一覧部分 -->
       <div class="task">
         {% for item in object_list %}
-        <div class="row mt-3">
-          <div class="col-sm-1">
-
-          </div>
+        <div class="row mt-4">
+          <div class="col-sm-1"></div>
           <div class="col-sm-1">
             {% if item.conditions == 1 %}
             <a href="#">⚪️</a>

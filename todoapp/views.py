@@ -17,6 +17,7 @@ class Create(CreateView):
     model = Task
     fields = ('title','content','conditions')
     success_url = '/'
+    template_name = "todoapp/task_create.html"
 
     def form_invalid(self,form):
         message.warning(self.request,"保存できませんでした")
@@ -26,6 +27,7 @@ class Update(UpdateView):
     model = Task
     fields = ('title','content','conditions')
     success_url = '/'
+    template_name = "todoapp/task_update.html"
 
     def form_invalid(self,form):
         message.warning(self.request,"保存できませんでした")
