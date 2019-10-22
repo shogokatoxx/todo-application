@@ -1,0 +1,134 @@
+/* baseCSS */
+body{
+  color:white;
+  /* 以下2つはよくダークモードで使われているフォント */
+  /* background-color:#282c2f; */
+  background-color:#1e1e1e;
+  font-size:13px;
+  border:0.5px;
+  font-family:arial;
+}
+h2{
+  color:#1ab5ff;
+  font-family:sans-serif;
+}
+/* headerとfooterはpositionを固める */
+.title{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:50px;
+}
+.task{
+  padding-top:50px;
+}
+footer small{
+  /* border-top:1px solid #bbbbbb; */
+  padding-top:10px;
+  padding-bottom:5px;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background-color:#282c2f;
+}
+footer{
+  text-align:center;
+}
+.object:hover{
+  text-decoration:none;
+}
+
+/* lists専用CSS */
+.orange{
+  color:orange;
+}
+#list .task-title-link{
+  color:#fff;
+  text-decoration:none;
+}
+
+/* detailCSS */
+#detail .detail-font{
+  font-size:20px;
+  font-family:arial;
+}
+#detail h3{
+  font-family:sans-serif;
+}
+#detail .shortcut-title{
+  font-size:15px;
+  font-family:fantasy;
+}
+#detail .shortcut-menu{
+  font-size:15px;
+}
+#detail .shortcut-menu li a{
+  color:#1ab5ff;
+  text-decoration:none;
+}
+#detail .task-title1{
+  color:#fff;
+}
+#detail .task-title2{
+  color:orange;
+}
+#detail .task-title3{
+  color:#1ab5ff;
+}
+#detail .modal-font{
+  color:#000;
+}
+#detail .delete2{
+  color:#fff;
+}
+#detail .delete2:hover{
+  text-decoration:none;
+  cursor:pointer;
+}
+
+/* deleteCSS */
+#delete .detail-font{
+  font-size:20px;
+  font-family:arial;
+}
+#delete h3{
+  font-family:sans-serif;
+}
+#delete .task-title1{
+  color:#fff;
+}
+#delete .task-title2{
+  color:orange;
+}
+#delete .task-title3{
+  color:#1ab5ff;
+}
+#delete .confirm{
+  color:red;
+}
+
+/* create専用CSS */
+#create input{
+  width:70%;
+}
+#create textarea{
+  width:70%;
+}
+#create .submit{
+  width:50%;
+  margin-left:50px;
+}
+
+/* update専用CSS */
+#update input{
+  width:70%;
+}
+#update textarea{
+  width:70%;
+}
+#update .submit{
+  width:50%;
+  margin-left:50px;
+}
