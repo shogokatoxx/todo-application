@@ -4,11 +4,12 @@
   <head>
     <meta charset="utf-8">
     <title>詳細ページ</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
     integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/todostyle.css' %}">
   </head>
 
   <body id="detail">
@@ -21,7 +22,7 @@
 
           </div>
           <div class="col-sm-10">
-            <a href="{% url 'todoapp:lists' %}" style="text-decoration:none;"><h2>タスク詳細</h1></a>
+            <a href="{% url 'todoapp:lists' %}" style="text-decoration:none;"><img style="height:45px;" src="{% static 'images/taskchecker.png' %}"></a>
           </div>
           <div class="col-sm-1 mt-2">
             <a class="object" href="{% url 'todoapp:create' %}">➕</a>
@@ -49,7 +50,7 @@
           <div class="col-sm-2"></div>
           <div class="col-sm-5">
             <p class="detail-font">
-            {{ object.content | linebreaksbr }}
+            {{ object.content | linebreaksbr | urlize }}
           </p>
           </div>
           <div class="col-sm-2"></div>
@@ -75,7 +76,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                    <button type="button" class="btn btn-danger"><a class="delete2" href="{% url 'todoapp:delete2' pk=object.pk %}">削除</a></button>
+                    <a class="delete2" href="{% url 'todoapp:delete2' pk=object.pk %}"><button type="button" class="btn btn-danger">削除</button></a>
                 </div>
             </div>
           </div>
@@ -84,7 +85,7 @@
         <div class="row mt-5">
           <div class="col-2"></div>
           <div class="col-3">
-            <p>状態：{% if object.conditions == 1 %}新規{% elif object.conditions == 2 %}作業中{% else %}完了{% endif %}</p>
+            <p>状態：{{ object.get_conditions_display }}</p>
           </div>
         </div>
 

@@ -19,22 +19,22 @@ h2{
   left:0;
   width:100%;
   height:50px;
+  z-index:2;
+  background-color:#1e1e1e;
 }
 .task{
   padding-top:50px;
+  z-index:1;
 }
-footer small{
-  /* border-top:1px solid #bbbbbb; */
-  padding-top:10px;
-  padding-bottom:5px;
+footer{
+  text-align:center;
+  padding:10px 0 5px 0;
   position:fixed;
   bottom:0;
   left:0;
   width:100%;
   background-color:#282c2f;
-}
-footer{
-  text-align:center;
+  z-index:2;
 }
 .object:hover{
   text-decoration:none;
@@ -48,7 +48,15 @@ footer{
   color:#fff;
   text-decoration:none;
 }
-
+#list .no-task{
+  text-align:center;
+  padding-top:10px;
+  padding-bottom:5px;
+  position:fixed;
+  bottom:50%;
+  left:0;
+  width:100%;
+}
 /* detailCSS */
 #detail .detail-font{
   font-size:20px;
@@ -77,19 +85,19 @@ footer{
 #detail .task-title3{
   color:#1ab5ff;
 }
-#detail .modal-font{
+#detail .modal-font,#list .modal-font{
   color:#000;
 }
-#detail .delete2{
+#detail .delete2,#list .delete2{
   color:#fff;
 }
-#detail .delete2:hover{
+#detail .delete2:hover,#list .delete2:hover{
   text-decoration:none;
   cursor:pointer;
 }
 
 /* deleteCSS */
-#delete .detail-font{
+/* #delete .detail-font{
   font-size:20px;
   font-family:arial;
 }
@@ -107,7 +115,7 @@ footer{
 }
 #delete .confirm{
   color:red;
-}
+} */
 
 /* create専用CSS */
 #create input{

@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.urls import reverse
 from django.views.generic import ListView,DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.contrib import messages
 from .models import Task
+from .forms import TaskForm
 
 class Lists(ListView):
     model = Task
@@ -15,27 +17,36 @@ class Detail(DetailView):
 
 class Create(CreateView):
     model = Task
-    fields = ('title','content','conditions')
+    form_class = TaskForm
     success_url = '/'
     template_name = "todoapp/task_create.html"
 
+    def form_valid(self,form):
+        messages.success(self.request,"保存しました") #messages.infoでもメッセージは送れる
+        return super().form_valid(form) #return redirect(reverse('todoapp:lists'))にすると「ログインしました」の文字だけ送られDBへは保存できてなかった
+                                        #基本汎用ビューではもともとあるメソッドをうまく使う方がいい
+
     def form_invalid(self,form):
-        message.warning(self.request,"保存できませんでした")
+        messages.warning(self.request,"保存できませんでした")
         return super().form_invalid(form)
 
 class Update(UpdateView):
     model = Task
-    fields = ('title','content','conditions')
+    form_class = TaskForm
     success_url = '/'
     template_name = "todoapp/task_update.html"
 
+    def form_valid(self,form):
+        messages.success(self.request,"保存しました")
+        return super().form_valid(form)
+
     def form_invalid(self,form):
-        message.warning(self.request,"保存できませんでした")
+        messages.warning(self.request,"保存できませんでした")
         return super().form_invalid(form)
 
-class Delete(DeleteView):
-    model = Task
-    success_url = '/'
+# class Delete(DeleteView):
+#     model = Task
+#     success_url = '/'
 
 def delete(request,pk):
     tasks = get_object_or_404(Task,pk=pk)
