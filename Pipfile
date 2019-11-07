@@ -12,3 +12,5 @@ django = "*"
 python_version = "3.6"
 
 [scripts]
+start = "python manage.py runserver 192.168.33.10:8080"
+test = "python manage.py test todoapp"

@@ -1,0 +1,91 @@
+[1mdiff --git a/Pipfile b/Pipfile[m
+[1mindex 852a0e1..482ef46 100644[m
+[1m--- a/Pipfile[m
+[1m+++ b/Pipfile[m
+[36m@@ -12,3 +12,4 @@[m [mdjango = "*"[m
+ python_version = "3.6"[m
+ [m
+ [scripts][m
+[32m+[m[32mstart = "python manage.py runserver 192.168.33.10:8080"[m
+[1mdiff --git a/projects/urls.py b/projects/urls.py[m
+[1mindex 4df7554..138e42e 100644[m
+[1m--- a/projects/urls.py[m
+[1m+++ b/projects/urls.py[m
+[36m@@ -1,21 +1,7 @@[m
+[31m-"""projects URL Configuration[m
+[31m-[m
+[31m-The `urlpatterns` list routes URLs to views. For more information please see:[m
+[31m-    https://docs.djangoproject.com/en/2.2/topics/http/urls/[m
+[31m-Examples:[m
+[31m-Function views[m
+[31m-    1. Add an import:  from my_app import views[m
+[31m-    2. Add a URL to urlpatterns:  path('', views.home, name='home')[m
+[31m-Class-based views[m
+[31m-    1. Add an import:  from other_app.views import Home[m
+[31m-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')[m
+[31m-Including another URLconf[m
+[31m-    1. Import the include() function: from django.urls import include, path[m
+[31m-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))[m
+[31m-"""[m
+ from django.contrib import admin[m
+[31m-from django.urls import path[m
+[32m+[m[32mfrom django.urls import path,include[m
+ [m
+ urlpatterns = [[m
+     path('admin/', admin.site.urls),[m
+[32m+[m[32m    path('',include('todoapp.urls')),[m
+ ][m
+[1mdiff --git a/todoapp/tests.py b/todoapp/tests.py[m
+[1mindex 7ce503c..948c7da 100644[m
+[1m--- a/todoapp/tests.py[m
+[1m+++ b/todoapp/tests.py[m
+[36m@@ -1,3 +1,4 @@[m
+ from django.test import TestCase[m
+[31m-[m
+[31m-# Create your tests here.[m
+[32m+[m[32mfrom django.contrib import messages[m
+[32m+[m[32mfrom .models import Task[m
+[32m+[m[32mfrom . import views[m
+[1mdiff --git a/todoapp/views.py b/todoapp/views.py[m
+[1mindex 91ea44a..1ade765 100644[m
+[1m--- a/todoapp/views.py[m
+[1m+++ b/todoapp/views.py[m
+[36m@@ -1,3 +1,36 @@[m
+[31m-from django.shortcuts import render[m
+[32m+[m[32m# from django.shortcuts import render,redirect[m
+[32m+[m[32mfrom django.views.generic import ListView,DetailView[m
+[32m+[m[32mfrom django.views.generic.edit import CreateView,UpdateView,DeleteView[m
+[32m+[m[32mfrom django.contrib import messages[m
+[32m+[m[32mfrom .models import Task[m
+ [m
+[31m-# Create your views here.[m
+[32m+[m[32mclass Lists(ListView):[m
+[32m+[m[32m    model = Task[m
+[32m+[m
+[32m+[m[32m    def get_queryset(set):[m
+[32m+[m[32m        return Task.objects.order_by('-conditions','created_at')[m
+[32m+[m
+[32m+[m[32mclass Detail(DetailView):[m
+[32m+[m[32m    model = Task[m
+[32m+[m
+[32m+[m[32mclass Create(CreateView):[m
+[32m+[m[32m    model = Task[m
+[32m+[m[32m    fields = ('title','content','conditions')[m
+[32m+[m[32m    success_url = '/'[m
+[32m+[m
+[32m+[m[32m    def form_invalid(self,form):[m
+[32m+[m[32m        message.warning(self.request,"保存できませんでした")[m
+[32m+[m[32m        return super().form_invalid(form)[m
+[32m+[m
+[32m+[m[32mclass Update(UpdateView):[m
+[32m+[m[32m    model = Task[m
+[32m+[m[32m    fields = ('title','content','conditions')[m
+[32m+[m[32m    success_url = '/'[m
+[32m+[m
+[32m+[m[32m    def form_invalid(self,form):[m
+[32m+[m[32m        message.warning(self.request,"保存できませんでした")[m
+[32m+[m[32m        return super().form_invalid(form)[m
+[32m+[m
+[32m+[m[32mclass Delete(DeleteView):[m
+[32m+[m[32m    model = Task[m
+[32m+[m[32m    success_url = '/'[m
