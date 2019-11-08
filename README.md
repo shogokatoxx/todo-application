@@ -1,18 +1,24 @@
-# TODO
+# TaskChanger
 
-task management app
+タスク管理アプリ
 
-## Description
+## 概要
 
-Task management application using Django.
-lists,details,edits and 3 views.
+Djangoで開発しました。途中までですが、tsuchinagaさんというかたと
+共同開発という形でやってました。
+タイトル、本文、状態、作成時間で1タスクとなります。
 
-## Features
-- lists view
-- detail view
-- edit view
 
-## Requirement
+## 機能
+- 一覧ビュー
+- 詳細ビュー
+- 編集ビュー
+- 追加ビュー
+- 状態変化(ボタン)
+- 削除機能
+- モーダルウインドウ
+
+## 開発環境
 
 <<<<<<< HEAD
 - Python3.6
@@ -24,30 +30,30 @@ lists,details,edits and 3 views.
 >>>>>>> develop
 - sqlparse0.3.0
 
-## Usage
+## 使用方法
+1.まずPython環境を用意
+2.「https://github.com/shogokatoxx/todo-application.git」をクローン
+3.pipというパッケージ管理ライブラリで「pipenv」というパッケージ管理ライブラリをインストール
+4.django-todo(プロジェクトファイル)でターミナル「$pipenv sync」を実行
+5.「$pipenv run start」で「https://192.168.33.10:8080」にTaskChangerが展開されます
 
-Undecided
+※Dockerfileを使っても環境の準備が可能です(詳細は下に記述)
 
-## Installation
+## Version
+- Version 1.0 ：現バージョン
+- Version 1.5 ：予定中(タスクの上にリレーション追加追加、フォーム欄の改善)
 
-Undecided
+### Dockerについて
 
-
-## Anything Else
-
-Undecided
-
-## Docker
-
-### Dockerfileでやってること
+## Dockerfileでやってること
 * python, pipが入ってる環境にpipenvをいれる
 * 作業ディレクトリとPYTHONPATHの設定
 * pipenvを使って依存するパッケージのインストール
 
-### docker-composeでやってること
+## docker-composeでやってること
 * port 8000をホスト側の8000にマウント
 * コンテナ起動時にstart.shを実行
 
-### start.shでやってること
+## start.shでやってること
 * マイグレーション
 * 開発用サーバの起動
