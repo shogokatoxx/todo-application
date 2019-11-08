@@ -31,13 +31,13 @@ Djangoで開発しました。途中までですが、tsuchinagaさんという�
 - sqlparse0.3.0
 
 ## 使用方法
-1.まずPython環境を用意
-2.「https://github.com/shogokatoxx/todo-application.git」をクローン
-3.pipというパッケージ管理ライブラリで「pipenv」というパッケージ管理ライブラリをインストール
-4.django-todo(プロジェクトファイル)でターミナル「$pipenv sync」を実行
-5.「$pipenv run start」で「https://192.168.33.10:8080」にTaskChangerが展開されます
+- Python、git環境を用意
+- 「https://github.com/shogokatoxx/todo-application.git」をクローン
+- pipというパッケージ管理ライブラリで「pipenv」というパッケージ管理ライブラリをインストール
+- django-todo(プロジェクトファイル)でターミナル「$pipenv sync」を実行
+- 「$pipenv run start」で「https://192.168.33.10:8080」にTaskChangerが展開されます
 
-※Dockerfileを使っても環境の準備が可能です(詳細は下に記述)
+※Dockerを使っても環境の準備が可能です(詳細は下に記述)
 
 ## Version
 - Version 1.0 ：現バージョン
