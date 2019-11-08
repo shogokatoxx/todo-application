@@ -43,7 +43,7 @@ Djangoで開発しました。途中までですが、tsuchinagaさんという�
 - Version 1.0 ：現バージョン
 - Version 1.5 ：予定中(タスクの上にリレーション追加追加、フォーム欄の改善)
 
-### Dockerについて
+# Dockerについて
 
 ## Dockerfileでやってること
 * python, pipが入ってる環境にpipenvをいれる
