@@ -8,6 +8,7 @@ import datetime
 import pytz
 from django.forms import ModelForm
 
+# モデルテスト
 class TaskModelTests(TestCase):
     def test_conditions1_display(self):
         conditions1 = Task(conditions=1)
@@ -24,12 +25,18 @@ class TaskModelTests(TestCase):
 def create_task(title,content,conditions):
     return Task.objects.create(title=title,content=content,conditions=conditions)
 
+# 一覧ビューテスト
 class TaskListsViewTests(TestCase):
     def test_no_tasks(self):
         response = self.client.get(reverse('todoapp:lists'))
         self.assertEqual(response.status_code,200)
         self.assertContains(response,"No tasks are registed.")
         self.assertQuerysetEqual(response.context['object_list'],[])
+
+    def test_view_class(self):
+        create_task(title="conditions1 task",content="conditions1 task",conditions=1)
+        view = resolve('/')
+        self.assertEqual(view.func.view_class,views.Lists)
 
     def test_conditions1_task(self):
         create_task(title="conditions1 task",content="conditions1 task",conditions=1)
@@ -73,11 +80,7 @@ class TaskListsViewTests(TestCase):
             conditions3 = item.conditions
             self.assertEqual(conditions3,3)
 
-    def test_view_class(self):
-        create_task(title="conditions1 task",content="conditions1 task",conditions=1)
-        view = resolve('/')
-        self.assertEqual(view.func.view_class,views.Lists)
-
+# 詳細ビューテスト
 class TaskDetailViewTests(TestCase):
     def test_conditions1_task_status_code(self):
         conditions1_task = create_task(title="conditions1 task",content="conditions1 task",conditions=1)
@@ -125,6 +128,7 @@ class TaskDetailViewTests(TestCase):
         view = resolve('/1')
         self.assertEqual(view.func.view_class,views.Detail)
 
+# 編集ビューテスト
 class TaskUpdateViewTestCase(TestCase):
     def setUp(self):
         self.conditions1_task = create_task(title="conditions1 task",content="conditions1 task",conditions=1)
@@ -194,6 +198,7 @@ class TaskUpdateViewTestCase(TestCase):
         form = response.context.get('form')
         self.assertTrue(form.errors)
 
+# 追加ビューテスト
 class TaskCreateViewTestCase(TestCase):
     def setUp(self):
         self.url = reverse('todoapp:create')
@@ -251,7 +256,7 @@ class InvalidTaskCreateViewTests(TaskCreateViewTestCase):
         self.assertEqual(len(message),1)
         self.assertEqual(str(message[0]),'保存できませんでした')
 
-
+# 削除機能テスト
 class TaskDeleteViewTestCase(TestCase):
     def setUp(self):
         self.task = create_task(title="テストタスク",content="テストテスト",conditions=1)

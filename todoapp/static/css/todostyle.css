@@ -118,11 +118,32 @@ footer{
 } */
 
 /* create専用CSS */
-#create input{
+#create input[type='text']{
   width:70%;
+  color: #fff;
+  background: #1e1e1e;
+  border: none;
+  height: 30px;
+  border-bottom: 2px solid #fff;
+}
+#create input[type='text']:focus{
+  outline:none;
 }
 #create textarea{
   width:70%;
+  height:30px;
+  color: #fff;
+  background: #1e1e1e;
+  border: none;
+  line-height: 30px;
+  border-bottom: 2px solid #fff;
+  resize:vertical;
+}
+#create input:focus{
+  outline:none;
+}
+#create textarea:focus{
+  outline:none;
 }
 #create .submit{
   width:50%;
@@ -130,11 +151,32 @@ footer{
 }
 
 /* update専用CSS */
-#update input{
+#update input[type='text']{
   width:70%;
+  color:#fff;
+  background:#1e1e1e;
+  border:none;
+  border-bottom:2px solid #fff;
+  height:30px;
+}
+#update input[type='text']:focus{
+  outline:none;
 }
 #update textarea{
   width:70%;
+  color:#fff;
+  background:#1e1e1e;
+  border:none;
+  border-bottom:2px solid #fff;
+  height:30px;
+  line-height:30px;
+  resize:vertical;
+}
+#update textarea:focus{
+  outline:none;
+}
+#update input:focus{
+  outline:none;
 }
 #update .submit{
   width:50%;
