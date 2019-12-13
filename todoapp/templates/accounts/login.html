@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+{% block title %}ログイン{% endblock %}
+
+{% block content %}
+<div id="login">
+  <div class="row mt-5">
+    <div class="col-4"></div>
+    <div class="col-3">
+      <h1 class="login-font">Login</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4 login-box">
+      <form method="post" class="mt-5">
+        {% csrf_token %}
+        {% load widget_tweaks %}
+        <div class="left">
+          <label for="id_username" class="control-label mt-3 labels">username</label><br>
+          {{ form.username |add_class:"form-control intext" }}<br>
+          <label for="id_password" class="control-label mt-2 labels">password</label><br>
+          {{ form.password |add_class:"form-control intext" }}<br>
+        </div>
+        <div class="center">
+          <input type="submit" class="btn btn-default save-botton" value="→">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

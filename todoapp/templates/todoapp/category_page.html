@@ -1,0 +1,95 @@
+{% extends 'todoapp/base.html' %}
+{% block title %}カテゴリーページ{% endblock %}
+
+{% block content %}
+{% load static %}
+<div id="category-page">
+  <div class="row mt-2">
+    <div class="col-sm-5">
+      <h2 style="color:#1ab5ff; font-size:2rem; font-family:arial;">・カテゴリー選択</h2>
+    </div>
+    <div class="col-sm-6"></div>
+    <div class="col-sm-1 mt-1">
+      <a class="object" style="cursor:pointer;" data-toggle="modal" data-target="#categoryCreUpModal" data-title="追加">➕</a>
+    </div>
+  </div>
+    {% for categorys in category %}
+    {% if forloop.counter0 == 0 %}
+    <div class="card-columns mt-3">
+    {% endif %}
+    {% if forloop.counter0|divisibleby:"3" %}
+    </div>
+    <div class="card-columns mt-1">
+    {% endif %}
+    <div class="card">
+      <div class="card-category-btn">
+        <div class="">
+          <a class="category-link" data-toggle="modal" data-target="#categoryDelModal" data-deletepk="{{ categorys.pk }}">
+            <img src="{% static 'images/dust2.png' %}" style="height:45px;width:45px;" class="mt-2 mr-2">
+          </a>
+        </div>
+        <div class="">
+          <a class="category-link pencil" data-toggle="modal" data-target="#categoryCreUpModal" data-categorypk="{{ categorys.pk }}" data-title="編集" data-text="{{ categorys.text }}">
+            <i class="fa fa-pencil category-update-font mr-2"></i>
+          </a>
+        </div>
+      </div>
+      <a class="category-link" href="{% url 'todoapp:task_lists' category_pk=categorys.pk %}">
+        <div class="card-body p-4">
+          <h2 class="card-title">{{ categorys.text }}</h2>
+          {% if categorys.task_set.all %}
+          {% for task in categorys.task_set.all %}
+            {% if forloop.revcounter == 1 %}
+              <p class="card-text card-text">{{ forloop.counter }}tasks</p>
+              <p class="card-text card-text">{{ task.created_at }}</p>
+              {% endif %}
+              {% endfor %}
+              {% else %}
+              <p class="card-text card-text">Notasks</p>
+              <p class="card-text card-text">please create task.</p>
+              {% endif %}
+            </div>
+          </a>
+        </div>
+      {% if forloop.revcounter == 1 %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  <div class="modal fade" id="categoryDelModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-font"><div class="modal-title" id="myModalLabel" style="color:#000;">削除確認画面</div></h3>
+          </div>
+          <div class="modal-body">
+              <label class="modal-font" style="color:#000;">本当にデータを削除しますか？</label>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+              <a class="category-delete" href="40/category_delete/"><button type="button" class="btn btn-danger">削除</button></a>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="categoryCreUpModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h3 class="modal-font"><div class="modal-title" id="myModalLabel" style="color:#000;">カテゴリーを追加</div></h3>
+          </div>
+          <form action="{% url 'todoapp:category_create' %}" method="post">
+            <div class="modal-body">
+                {% csrf_token %}
+                {% load widget_tweaks %}
+                {{ form.text | add_class:"form-control intext"}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                <input type="submit" class="btn btn-danger" value="保存">
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

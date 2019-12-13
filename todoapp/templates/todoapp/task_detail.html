@@ -1,113 +1,86 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>詳細ページ</title>
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/todostyle.css' %}">
-  </head>
+{% extends 'todoapp/base.html' %}
+{% block title %}詳細ページ{% endblock %}
 
-  <body id="detail">
-    <div id="main">
-
-      <!-- タイトル部分 -->
-      <div class="title">
-        <div class="row border-bottom border-dark">
-          <div class="col-sm-1">
-
-          </div>
-          <div class="col-sm-10">
-            <a href="{% url 'todoapp:lists' %}" style="text-decoration:none;"><img style="height:45px;" src="{% static 'images/taskchecker.png' %}"></a>
-          </div>
-          <div class="col-sm-1 mt-2">
-            <a class="object" href="{% url 'todoapp:create' %}">➕</a>
+{% block content %}
+<div id="task-detail">
+  <div class="row">
+    <div id="sidebar" class="col-3"></div>
+    <div id="main-content" class="col-9">
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9 border-bottom border-dark">
+          {% if task.conditions == 1 %}
+          <h3 class="task-title1 pb-2">{{ task.title }}</h3>
+          {% elif task.conditions == 2 %}
+          <h3 class="task-title2 pb-2">{{ task.title }}</h3>
+          {% elif task.conditions == 3 %}
+          <h3 class="task-title3 pb-2">{{ task.title }}</h3>
+          {% endif %}
+        </div>
+        <div class="col-sm-2 border-bottom border-dark"></div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <p class="detail-font">
+          {{ task.content | linebreaksbr | urlize }}
+        </p>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+          <p class="shortcut-title">Shortcut MENU</p>
+          <ul class="shortcut-menu">
+            <li class="mt-1"><a href="{% url 'todoapp:task_lists' category_pk=category_pk %}">戻る</a></li>
+            <li class="mt-1"><a href="{% url 'todoapp:task_update' category_pk=category_pk task_pk=task.pk %}">編集</a></li>
+            <li class="mt-1"><a href="{% url 'todoapp:task_create' category_pk=category_pk %}">追加</a></li>
+            <li class="mt-1"><a style="cursor:pointer;" data-toggle="modal" data-target="#deleteModal">削除</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="modal-font"><div class="modal-title" id="myModalLabel">削除確認画面</div></h3>
+              </div>
+              <div class="modal-body">
+                  <label class="modal-font">本当にデータを削除しますか？</label>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                  <a class="delete2" href="{% url 'todoapp:task_delete' category_pk=category_pk task_pk=task.pk %}"><button type="button" class="btn btn-danger">削除</button></a>
+              </div>
           </div>
         </div>
       </div>
-
-      <!-- タスク一覧部分 -->
-      <div class="task mt-5">
-        <div class="row mt-3">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-9 border-bottom border-dark">
-            {% if object.conditions == 1 %}
-            <h3 class="task-title1">{{ object.title }}</h3>
-            {% elif object.conditions == 2 %}
-            <h3 class="task-title2">{{ object.title }}</h3>
-            {% elif object.conditions == 3 %}
-            <h3 class="task-title3">{{ object.title }}</h3>
-            {% endif %}
-          </div>
-          <div class="col-sm-1 border-bottom border-dark"></div>
+      <div class="row mt-5">
+        <div class="col-1"></div>
+        <div class="col-3">
+          <p>状態：{{ task.get_conditions_display }}</p>
         </div>
-
-        <div class="row mt-5">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-5">
-            <p class="detail-font">
-            {{ object.content | linebreaksbr | urlize }}
-          </p>
-          </div>
-          <div class="col-sm-2"></div>
-          <div class="col-sm-2">
-            <p class="shortcut-title">ショートカットメニュー</p>
-            <ul class="shortcut-menu">
-              <li class="mt-1"><a href="{% url 'todoapp:update' pk=object.pk %}">編集</a></li>
-              <li class="mt-1"><a href="{% url 'todoapp:create' %}">追加</a></li>
-              <li class="mt-1"><a style="cursor:pointer;" data-toggle="modal" data-target="#testModal">削除</a></li>
-            </ul>
-          </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
+          <p>作成日：{{ task.created_at }}</p>
         </div>
-
-
-        <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-font"><div class="modal-title" id="myModalLabel">削除確認画面</div></h3>
-                </div>
-                <div class="modal-body">
-                    <label class="modal-font">本当にデータを削除しますか？</label>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                    <a class="delete2" href="{% url 'todoapp:delete2' pk=object.pk %}"><button type="button" class="btn btn-danger">削除</button></a>
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row mt-5">
-          <div class="col-2"></div>
-          <div class="col-3">
-            <p>状態：{{ object.get_conditions_display }}</p>
-          </div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-sm-2"></div>
-          <div class="col-sm-3">
-            <p>作成日：{{ object.created_at }}</p>
-          </div>
-          <div class="col-sm-1"></div>
-        </div>
+        <div class="col-sm-1"></div>
       </div>
     </div>
-
-    <footer>
-      <small>(c)shogokatoxx</small>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  </body>
-</html>
+    <div id="sidebar-content">
+      <div class="sidebar-content-title pb-3 pt-3">
+        <h3>Category</h3>
+      </div>
+      <ul class="ml-2 mt-3">
+        {% for item in categorys %}
+          {% if item.pk == category_pk %}
+            <li class="pt-2 task-select pl-1"><a class="sidebar-link-select" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
+          {% else %}
+            <li class="pt-2 pl-1"><a class="sidebar-link" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

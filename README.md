@@ -27,6 +27,7 @@ Djangoで開発しました。途中までですが、tsuchinagaさんという�
 - Python3
 - Django2.2.6
 - pytz2019.1
+- django-widget-tweaks
 >>>>>>> develop
 - sqlparse0.3.0
 
@@ -41,7 +42,7 @@ Djangoで開発しました。途中までですが、tsuchinagaさんという�
 
 ## Version
 - Version 1.0 ：現バージョン
-- Version 1.5 ：予定中(タスクの上にリレーション追加追加、フォーム欄の改善)
+- Version 1.5 ：開発中(タスクの上にリレーション追加、フォーム欄の改善)
 
 ### Docker
 
@@ -57,3 +58,8 @@ Djangoで開発しました。途中までですが、tsuchinagaさんという�
 ## start.shでやってること
 * マイグレーション
 * 開発用サーバの起動
+
+## 開発ブランチ
+* develop•••ver1の開発で使ったブランチ
+* future•••ver1.5の開発で使ってるブランチ
+* master•••本番ブランチ

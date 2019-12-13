@@ -12,21 +12,78 @@ h2{
   color:#1ab5ff;
   font-family:sans-serif;
 }
+.object{
+  font-size:30px;
+}
+.object:hover{
+  cursor:pointer;
+  text-decoration:none;
+  opacity:0.8;
+}
+.orange{
+  color:orange;
+}
+#explantory-list{
+  list-style:none;
+  padding:0;
+}
+#content-title{
+  color:#1ab5ff;
+  font-family:arial;
+}
+/* base専用 */
 /* headerとfooterはpositionを固める */
-.title{
+#base #main{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+#base .title{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  height:50px;
+  height:45px;
   z-index:2;
   background-color:#1e1e1e;
 }
-.task{
-  padding-top:50px;
-  z-index:1;
+#base #menu:hover,#base #close-btn:hover{
+  text-decoration:none;
+  opacity:0.8;
+  cursor:pointer;
 }
-footer{
+#base .click-menu{
+  position:absolute;
+  top:0;
+  right:-300px;
+  transition:0.3s ease-out;
+  height:500px;
+  width:300px;
+  background:#282c2f;
+  border-radius:10px;
+}
+#base .click-menu.open{
+  right:0;
+  transition:0.3s ease-out;
+}
+#base .menu-content-box{
+  width:100%;
+  height:100px;
+}
+#base .menu-content{
+  text-align:right;
+}
+#base .menu-content .menu-font{
+  font-size:2.5rem;
+}
+#base .menu-content .menu-link{
+  text-decoration:none;
+  color:#eee;
+}
+#base .menu-content .menu-link:hover{
+  opacity:0.8;
+}
+#base footer{
   text-align:center;
   padding:10px 0 5px 0;
   position:fixed;
@@ -36,89 +93,186 @@ footer{
   background-color:#282c2f;
   z-index:2;
 }
-.object:hover{
+
+
+/* category_page */
+#category-page{
+  padding-top:45px;
+  padding-bottom:45px;
+  z-index:1;
+  width:80%;
+  margin:0 auto;
+}
+#category-page .card{
+  color:#000;
+  height:25%;
+  background:#ddd;
+  text-align:center;
+  box-shadow: 0 3px 2px #bbb;
+  cursor:pointer;
+}
+#category-page .card:hover{
+  opacity:0.8;
+}
+#category-page .card-title{
+  color:#1e1e1e;
+  font-size:1.1rem;
+  font-weight:bold;
+  font-family:serif;
+}
+#category-page .card-text{
+  font-family:sans-serif;
+}
+#category-page .card-category-btn{
+  float:right;
+}
+#category-page .category-update-font{
+  font-size:45px;
+}
+#category-page .category-link{
+  color:#1e1e1e;
+}
+#category-page .category-link:hover{
   text-decoration:none;
+  cursor:pointer;
+  opacity:0.8;
+}
+#category-page .pencil{
+  color:#444;
 }
 
-/* lists専用CSS */
-.orange{
-  color:orange;
+/* task-lists task-detail task-create task-update専用CSS */
+#task-lists,#task-detail,#task-create,#task-update,#login,#logout,#signup{
+  padding-top:45px;
+  z-index:1;
 }
-#list .task-title-link{
+
+/* sidebar関連 */
+#task-lists #sidebar,#task-detail #sidebar,#task-update #sidebar,#task-create #sidebar{
+  height:50rem;
+  background:#1e1e1e;
+}
+#task-lists #main-content,#task-detail #main-content,#task-update #main-content,#task-create #main-content{
+  height:100%;
+  padding-bottom:45px;
+}
+#task-lists #sidebar-content,#task-detail #sidebar-content,#task-update #sidebar-content,#task-create #sidebar-content{
+  position:fixed;
+  top:45px;
+  left:0;
+  height:50rem;
+  width:25%;
+  background:#222;
+  border-radius:5px;
+}
+#task-lists #sidebar-content .sidebar-content-title,#task-detail #sidebar-content .sidebar-content-title,#task-update #sidebar-content .sidebar-content-title,#task-create #sidebar-content .sidebar-content-title{
+  text-align:center;
+  border-bottom:1px solid #333;
+}
+#task-lists #sidebar-content .sidebar-content-title h3,#task-detail #sidebar-content .sidebar-content-title h3,#task-update #sidebar-content .sidebar-content-title h3,#task-create #sidebar-content .sidebar-content-title h3{
+  font-size:2rem;
+  /* color:#ddd; */
+  color:#1ab5ff;
+}
+#task-lists #sidebar-content ul,#task-detail #sidebar-content ul,#task-update #sidebar-content ul,#task-create #sidebar-content ul{
+  font-size:1.5rem;
+  color:#ddd;
+  font-family:serif;
+}
+#task-lists #sidebar-content ul .task-select,#task-detail #sidebar-content ul .task-select,#task-update #sidebar-content ul .task-select,#task-create #sidebar-content ul .task-select{
+  opacity:0.6;
+}
+#task-lists .no-padding,#task-detail .no-padding,#task-update .no-padding,#task-create .no-padding{
+  padding:0;
+}
+.sidebar-link-select:hover{
+  color:#ddd;
+  text-decoration:none;
+  opacity:0.4;
+  border-bottom:2px solid #ddd;
+}
+.sidebar-link:hover{
+  color:#ddd;
+  text-decoration:none;
+  opacity:0.8;
+  border-bottom:2px solid #ddd;
+}
+.sidebar-link-select{
+  font-size:1.5rem;
+  color:#ddd;
+  opacity:0.6;
+  font-family:serif;
+}
+.sidebar-link{
+  font-size:1.5rem;
+  color:#ddd;
+  font-family:serif;
+}
+
+
+/* task-lists専用CSS */
+#task-lists .task-title-link{
   color:#fff;
   text-decoration:none;
 }
-#list .no-task{
-  text-align:center;
+#task-lists .no-task{
+  /* text-align:center; */
   padding-top:10px;
   padding-bottom:5px;
   position:fixed;
   bottom:50%;
-  left:0;
+  left:55%;
   width:100%;
 }
-/* detailCSS */
-#detail .detail-font{
+#task-lists .content-box .object{
+  font-size:20px;
+}
+
+
+/* task-detail専用 */
+#task-detail .detail-font{
   font-size:20px;
   font-family:arial;
 }
-#detail h3{
-  font-family:sans-serif;
-}
-#detail .shortcut-title{
+#task-detail .shortcut-title{
   font-size:15px;
   font-family:fantasy;
 }
-#detail .shortcut-menu{
+#task-detail .shortcut-menu{
   font-size:15px;
 }
-#detail .shortcut-menu li a{
+#task-detail .shortcut-menu li a{
   color:#1ab5ff;
   text-decoration:none;
 }
-#detail .task-title1{
+#task-detail .task-title1{
   color:#fff;
 }
-#detail .task-title2{
+#task-detail .task-title2{
   color:orange;
 }
-#detail .task-title3{
-  color:#1ab5ff;
+#task-detail .task-title3{
+  color:#0048ff;
 }
-#detail .modal-font,#list .modal-font{
+#task-detail .modal-font,#list .modal-font{
   color:#000;
 }
-#detail .delete2,#list .delete2{
+#task-detail .delete2,#list .delete2{
   color:#fff;
 }
-#detail .delete2:hover,#list .delete2:hover{
+#task-detail .delete2:hover,#list .delete2:hover{
   text-decoration:none;
   cursor:pointer;
 }
-
-/* deleteCSS */
-/* #delete .detail-font{
-  font-size:20px;
+#task-detail .task-title1,#task-detail .task-title2,#task-detail .task-title3{
   font-family:arial;
 }
-#delete h3{
-  font-family:sans-serif;
-}
-#delete .task-title1{
-  color:#fff;
-}
-#delete .task-title2{
-  color:orange;
-}
-#delete .task-title3{
+#task-detail .orange{
   color:#1ab5ff;
 }
-#delete .confirm{
-  color:red;
-} */
 
-/* create専用CSS */
-#create input[type='text']{
+/* task-create専用CSS */
+#task-create input[type='text']{
   width:70%;
   color: #fff;
   background: #1e1e1e;
@@ -126,10 +280,10 @@ footer{
   height: 30px;
   border-bottom: 2px solid #fff;
 }
-#create input[type='text']:focus{
+#task-create input[type='text']:focus{
   outline:none;
 }
-#create textarea{
+#task-create textarea{
   width:70%;
   height:30px;
   color: #fff;
@@ -139,19 +293,20 @@ footer{
   border-bottom: 2px solid #fff;
   resize:vertical;
 }
-#create input:focus{
+#task-create input:focus{
   outline:none;
 }
-#create textarea:focus{
+#task-create textarea:focus{
   outline:none;
 }
-#create .submit{
+#task-create .submit{
   width:50%;
   margin-left:50px;
 }
 
+
 /* update専用CSS */
-#update input[type='text']{
+#task-update input[type='text']{
   width:70%;
   color:#fff;
   background:#1e1e1e;
@@ -159,10 +314,10 @@ footer{
   border-bottom:2px solid #fff;
   height:30px;
 }
-#update input[type='text']:focus{
+#task-update input[type='text']:focus{
   outline:none;
 }
-#update textarea{
+#task-update textarea{
   width:70%;
   color:#fff;
   background:#1e1e1e;
@@ -172,13 +327,64 @@ footer{
   line-height:30px;
   resize:vertical;
 }
-#update textarea:focus{
+#task-update textarea:focus{
   outline:none;
 }
-#update input:focus{
+#task-update input:focus{
   outline:none;
 }
-#update .submit{
+#task-update .submit{
   width:50%;
   margin-left:50px;
+}
+
+
+/* login,signup専用 */
+#login .login-box{
+  width:33%;
+  height:20rem;
+  border-radius:10px;
+  background:#ddd;
+  color:#333;
+}
+#login .login-box .left,#signup .login-box .left{
+  width:70%;
+  text-align:left;
+  margin:0 auto;
+}
+#login .login-box .center,#signup .login-box .center{
+  text-align:center;
+}
+#login .intext,#signup .intext{
+  width:100%;
+  margin:0 auto;
+}
+#login .labels,#signup .labels{
+  font-size:1rem;
+}
+#login .login-font,#signup .login-font{
+  font-family:sans-serif;
+  color:#ddd;
+}
+#login .save-botton,#signup .save-botton{
+  border:2px solid #ddd;
+  width:50%;
+  background:#888;
+  color:#fff;
+}
+#login .save-botton:hover,#signup .save-botton:hover{
+  border:5px solid #1ab5ff;
+}
+
+/* signup専用 */
+#signup .help-text{
+  color:#ff4949;
+  font-family:serif;
+}
+#signup .login-box{
+  width:33%;
+  height:37rem;
+  border-radius:10px;
+  background:#ddd;
+  color:#333;
 }

@@ -4,10 +4,17 @@ from . import views
 app_name = 'todoapp'
 
 urlpatterns = [
-    path('',views.Lists.as_view(),name='lists'),
-    path('<int:pk>',views.Detail.as_view(),name="detail"),
-    path('update/<int:pk>',views.Update.as_view(),name="update"),
-    path('create',views.Create.as_view(),name='create'),
-    path('delete2/<int:pk>',views.delete,name='delete2'),
-    path('conditions_change/<int:pk>',views.conditions_change,name="conditions_change"),
+    path('',views.category_page,name='category_page'),
+    path('category_create',views.category_create,name='category_create'),
+    path('<int:category_pk>/category_update',views.category_update,name='category_update'),
+    path('<int:category_pk>/category_delete',views.category_delete,name='category_delete'),
+    path('<int:category_pk>',views.task_lists,name='task_lists'),
+    path('<int:category_pk>/task_detail/<int:task_pk>',views.task_detail,name='task_detail'),
+    path('<int:category_pk>/task_create',views.task_create,name='task_create'),
+    path('<int:category_pk>/task_update/<int:task_pk>',views.task_update,name='task_update'),
+    path('<int:category_pk>/task_delete/<int:task_pk>',views.task_delete,name='task_delete'),
+    path('<int:category_pk>/conditions_change/<int:task_pk>',views.conditions_change,name='conditions_change'),
+    path('login/',views.LoginView.as_view(),name='login'),
+    path('logout',views.LogoutView.as_view(),name='logout'),
+    path('signup',views.SignUpView.as_view(),name="signup"),
 ]

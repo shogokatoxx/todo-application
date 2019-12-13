@@ -1,0 +1,101 @@
+{% extends 'todoapp/base.html' %}
+{% block title %}カテゴリーページ{% endblock %}
+
+{% block content %}
+<div id="task-lists">
+  {% if messages %}
+  <div class="row" style="background:gray;">
+    <div class="col-5"></div>
+    <div class="col-4 pt-3">
+      <ul class=“messages” style="list-style:none;">
+         {% for message in messages %}
+         <li{%if message.tags %} class=“{{ message.tags }}”{% endif %} style="font-size:15px;">{{ message }}</li>
+         {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+  <div class="row">
+    <div id="sidebar" class="col-3"></div>
+    <div id="main-content" class="col-9">
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4 mt-4">
+          <h2 style="color:#1ab5ff; font-size:2rem; font-family:arial;">・タスク一覧</h2>
+        </div>
+        <div class="col-sm-6 no-padding"></div>
+        <div class="col-sm-1 mt-3" style="padding:0;">
+          <a class="object mr-3" href="{% url 'todoapp:task_create' category_pk=category_pk %}">➕</a>
+        </div>
+      </div>
+      {% if tasks %}
+      {% for item in tasks %}
+      <div class="row mt-4 content-box">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1">
+          {% if item.conditions == 1 %}
+          <a class="object" href="{% url 'todoapp:conditions_change' category_pk=category_pk task_pk=item.pk %}">⚪️</a>
+          {% endif %}
+          {% if item.conditions == 2 %}
+          <a class="object" href="{% url 'todoapp:conditions_change' category_pk=category_pk task_pk=item.pk %}">⚪️</a>
+          {% endif %}
+          {% if item.conditions == 3 %}
+          <a class="object" href="{% url 'todoapp:conditions_change' category_pk=category_pk task_pk=item.pk %}">🔵</a>
+          {% endif %}
+        </div>
+
+        <div class="col-sm-9 border-bottom border-dark">
+          {% if item.conditions == 1 %}
+          <a href="{% url 'todoapp:task_detail' category_pk=category_pk task_pk=item.pk %}" class="task-title-link">{{ item.title }} (新規)</a>
+          {% endif %}
+          {% if item.conditions == 2 %}
+          <a href="{% url 'todoapp:task_detail' category_pk=category_pk task_pk=item.pk %}" class="task-title-link">{{ item.title }}<span class="orange"> (!!!)</span></a>
+          {% endif %}
+          {% if item.conditions == 3 %}
+          <a href="{% url 'todoapp:task_detail' category_pk=category_pk task_pk=item.pk %}" class="task-title-link">{{ item.title }}</a>
+          {% endif %}
+        </div>
+        <div class="col-sm-1 border-bottom border-dark">
+          <a style="cursor:pointer;" data-toggle="modal" data-target="#testModal" data-deletepk="{{ category_pk }}-{{ item.pk }}">🗑</a>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div class="no-task">
+        <p>No tasks are registed.</p>
+      </div>
+      {% endif %}
+      <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="modal-font"><div class="modal-title" id="myModalLabel" style="color:#000;">削除確認画面</div></h3>
+              </div>
+              <div class="modal-body">
+                  <label class="modal-font" style="color:#000;">本当にデータを削除しますか？</label>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                  <a class="delete2" href="/task_delete/40"><button type="button" class="btn btn-danger">削除</button></a>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="sidebar-content">
+    <div class="sidebar-content-title pb-3 pt-3">
+      <h3>Category</h3>
+    </div>
+    <ul class="ml-2 mt-3">
+      {% for item in categorys %}
+        {% if item.pk == category_pk %}
+          <li class="pt-2 task-select pl-1"><a class="sidebar-link-select" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
+        {% else %}
+          <li class="pt-2 pl-1"><a class="sidebar-link" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
