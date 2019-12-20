@@ -4,14 +4,14 @@
 {% block content %}
   <div id="signup">
     <div class="row mt-5">
-      <div class="col-4"></div>
-      <div class="col-3">
+      <div class="col-1 col-sm-4"></div>
+      <div class="col-6 col-sm-3">
         <h1 class="login-font">SignUp</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-4"></div>
-      <div class="col-4 login-box">
+    <div class="row bottom-box">
+      <div class="col-1 col-sm-4"></div>
+      <div class="col-10 col-sm-4 login-box">
         <form method="post" class="mt-4">
           {% csrf_token %}
           {% load widget_tweaks %}

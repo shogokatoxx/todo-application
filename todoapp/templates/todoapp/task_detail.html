@@ -6,9 +6,9 @@
   <div class="row">
     <div id="sidebar" class="col-3"></div>
     <div id="main-content" class="col-9">
-      <div class="row mt-4">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-9 border-bottom border-dark">
+      <div class="row mt-4 no-margins">
+        <div class="col-1 col-sm-1"></div>
+        <div class="col-9 col-sm-9 border-bottom border-dark">
           {% if task.conditions == 1 %}
           <h3 class="task-title1 pb-2">{{ task.title }}</h3>
           {% elif task.conditions == 2 %}
@@ -20,14 +20,14 @@
         <div class="col-sm-2 border-bottom border-dark"></div>
       </div>
       <div class="row mt-5">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-5">
+        <div class="col-1 col-sm-1 no-paddings"></div>
+        <div class="col-6 col-sm-5 no-paddings">
           <p class="detail-font">
           {{ task.content | linebreaksbr | urlize }}
         </p>
         </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-2">
+        <div class="col-1 col-sm-2 no-paddings"></div>
+        <div class="col-4 col-sm-2 no-paddings">
           <p class="shortcut-title">Shortcut MENU</p>
           <ul class="shortcut-menu">
             <li class="mt-1"><a href="{% url 'todoapp:task_lists' category_pk=category_pk %}">戻る</a></li>
@@ -54,14 +54,14 @@
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-1"></div>
-        <div class="col-3">
+        <div class="col-1 col-sm-1"></div>
+        <div class="col-10 col-sm-3">
           <p>状態：{{ task.get_conditions_display }}</p>
         </div>
       </div>
       <div class="row mt-3">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-3">
+        <div class="col-1 col-sm-1"></div>
+        <div class="col-10 col-sm-3">
           <p>作成日：{{ task.created_at }}</p>
         </div>
         <div class="col-sm-1"></div>
@@ -71,7 +71,7 @@
       <div class="sidebar-content-title pb-3 pt-3">
         <h3>Category</h3>
       </div>
-      <ul class="ml-2 mt-3">
+      <ul class="ml-2 mt-3 no-paddings">
         {% for item in categorys %}
           {% if item.pk == category_pk %}
             <li class="pt-2 task-select pl-1"><a class="sidebar-link-select" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
