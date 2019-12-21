@@ -4,6 +4,16 @@
 {% block content %}
 {% load static %}
 <div id="category-page">
+  {% if messages %}
+	 <ul class="messages_ul" style="list-style:none;">
+		   {% for message in messages %}
+			    <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+          </li>
+		   {% endfor %}
+	 </ul>
+  {% endif %}
   <div class="row mt-2">
     <div class="col-7 col-md-5 no-paddings">
       <h2 class="category_titles">・カテゴリー選択</h2>

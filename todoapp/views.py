@@ -107,6 +107,14 @@ def conditions_check(x):
 class LoginView(AuthLoginView):
     template_name = 'accounts/login.html'
 
+    def form_valid(self,form):
+        messages.success(self.request,"ログインしました")
+        return super().form_valid(form)
+
+    def form_invalid(self,form):
+        messages.warning(self.request,"ログインできませんでした")
+        return super().form_invalid(form)
+
 class LogoutView(AuthLogoutView):
     template_name = 'accounts/logout.html'
 
@@ -119,7 +127,12 @@ class SignUpView(CreateView):
         user = form.save()
         login(self.request,user)
         self.object = user
+        messages.success(self.request,"追加しました")
         return redirect(self.get_success_url())
+
+    def form_invalid(self,form):
+        messages.warning(self.request,"追加できませんでした")
+        return super().form_invalid(form)
 
 # class Lists(ListView):
 #     model = Task
@@ -151,10 +164,10 @@ class SignUpView(CreateView):
 #     success_url = '/'
 #     template_name = "todoapp/task_update.html"
 #
-#     def form_valid(self,form):
-#         messages.success(self.request,"保存しました")
-#         return super().form_valid(form)
-#
-#     def form_invalid(self,form):
-#         messages.warning(self.request,"保存できませんでした")
-#         return super().form_invalid(form)
+    # def form_valid(self,form):
+    #     messages.success(self.request,"保存しました")
+    #     return super().form_valid(form)
+    #
+    # def form_invalid(self,form):
+    #     messages.warning(self.request,"保存できませんでした")
+    #     return super().form_invalid(form)

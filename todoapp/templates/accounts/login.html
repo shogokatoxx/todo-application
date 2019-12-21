@@ -3,6 +3,16 @@
 
 {% block content %}
 <div id="login">
+  {% if messages %}
+	 <ul class="messages_ul" style="list-style:none;">
+		   {% for message in messages %}
+			    <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+          </li>
+		   {% endfor %}
+	 </ul>
+  {% endif %}
   <div class="row mt-5">
     <div class="col-1 col-sm-4"></div>
     <div class="col-6 col-sm-3">
@@ -15,11 +25,20 @@
       <form method="post" class="mt-5">
         {% csrf_token %}
         {% load widget_tweaks %}
+        {% if from.errors %}
+          {{ form.non_field_errors }}
+        {% endif %}
         <div class="left">
           <label for="id_username" class="control-label mt-3 labels">username</label><br>
           {{ form.username |add_class:"form-control intext" }}<br>
+          {% if form.username.errors %}
+            {{ form.username.errors }}
+          {% endif %}
           <label for="id_password" class="control-label mt-2 labels">password</label><br>
           {{ form.password |add_class:"form-control intext" }}<br>
+          {% if form.password.errors %}
+            {{ form.password.errors }}
+          {% endif %}
         </div>
         <div class="center">
           <input type="submit" class="btn btn-default save-botton" value="→">
