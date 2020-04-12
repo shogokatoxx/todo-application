@@ -1,4 +1,3 @@
-/* baseCSS */
 body{
   color:white;
   /* 以下2つはよくダークモードで使われているフォント */
@@ -31,360 +30,741 @@ h2{
   color:#1ab5ff;
   font-family:arial;
 }
-/* base専用 */
-/* headerとfooterはpositionを固める */
-#base #main{
-  width:100%;
-  height:100%;
-  position:relative;
-}
-#base .title{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:45px;
-  z-index:2;
-  background-color:#1e1e1e;
-}
-#base #menu:hover,#base #close-btn:hover{
-  text-decoration:none;
-  opacity:0.8;
-  cursor:pointer;
-}
-#base .click-menu{
-  position:absolute;
-  top:0;
-  right:-300px;
-  transition:0.3s ease-out;
-  height:500px;
-  width:300px;
-  background:#282c2f;
-  border-radius:10px;
-}
-#base .click-menu.open{
-  right:0;
-  transition:0.3s ease-out;
-}
-#base .menu-content-box{
-  width:100%;
-  height:100px;
-}
-#base .menu-content{
-  text-align:right;
-}
-#base .menu-content .menu-font{
-  font-size:2.5rem;
-}
-#base .menu-content .menu-link{
-  text-decoration:none;
-  color:#eee;
-}
-#base .menu-content .menu-link:hover{
-  opacity:0.8;
-}
-#base footer{
-  text-align:center;
-  padding:10px 0 5px 0;
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background-color:#282c2f;
-  z-index:2;
-}
+
+/* 対パソコン用スタイル */
+@media screen and (min-width:769px){
+  /* base専用 */
+  /* headerとfooterはpositionを固める */
+  #base #main{
+    width:100%;
+    height:100%;
+    position:relative;
+  }
+  #base .title{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:45px;
+    z-index:2;
+    background-color:#1e1e1e;
+  }
+  #base #menu:hover,#base #close-btn:hover{
+    text-decoration:none;
+    opacity:0.8;
+    cursor:pointer;
+  }
+  #base .click-menu{
+    position:absolute;
+    top:0;
+    right:-300px;
+    transition:0.3s ease-out;
+    height:500px;
+    width:300px;
+    background:#282c2f;
+    border-radius:10px;
+  }
+  #base .click-menu.open{
+    right:0;
+    transition:0.3s ease-out;
+  }
+  #base .menu-content-box{
+    width:100%;
+    height:100px;
+  }
+  #base .menu-content{
+    text-align:right;
+  }
+  #base .menu-content .menu-font{
+    font-size:2.5rem;
+  }
+  #base .menu-content .menu-link{
+    text-decoration:none;
+    color:#eee;
+  }
+  #base .menu-content .menu-link:hover{
+    opacity:0.8;
+  }
+  #base footer{
+    text-align:center;
+    padding:10px 0 5px 0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color:#282c2f;
+    z-index:2;
+  }
 
 
-/* category_page */
-#category-page{
-  padding-top:45px;
-  padding-bottom:45px;
-  z-index:1;
-  width:80%;
-  margin:0 auto;
-}
-#category-page .card{
-  color:#000;
-  height:25%;
-  background:#ddd;
-  text-align:center;
-  box-shadow: 0 3px 2px #bbb;
-  cursor:pointer;
-}
-#category-page .card:hover{
-  opacity:0.8;
-}
-#category-page .card-title{
-  color:#1e1e1e;
-  font-size:1.1rem;
-  font-weight:bold;
-  font-family:serif;
-}
-#category-page .card-text{
-  font-family:sans-serif;
-}
-#category-page .card-category-btn{
-  float:right;
-}
-#category-page .category-update-font{
-  font-size:45px;
-}
-#category-page .category-link{
-  color:#1e1e1e;
-}
-#category-page .category-link:hover{
-  text-decoration:none;
-  cursor:pointer;
-  opacity:0.8;
-}
-#category-page .pencil{
-  color:#444;
-}
+  /* category_page */
+  #category-page{
+    padding-top:45px;
+    padding-bottom:45px;
+    z-index:1;
+    width:80%;
+    margin:0 auto;
+  }
+  #category-page .card{
+    color:#000;
+    height:25%;
+    background:#ddd;
+    text-align:center;
+    box-shadow: 0 3px 2px #bbb;
+    cursor:pointer;
+  }
+  #category-page .card:hover{
+    opacity:0.8;
+  }
+  #category-page .card-title{
+    color:#1e1e1e;
+    font-size:1.1rem;
+    font-weight:bold;
+    font-family:serif;
+  }
+  #category-page .card-text{
+    font-family:sans-serif;
+  }
+  #category-page .card-category-btn{
+    float:right;
+  }
+  #category-page .category-update-font{
+    font-size:45px;
+  }
+  #category-page .category-link{
+    color:#1e1e1e;
+  }
+  #category-page .category-link:hover{
+    text-decoration:none;
+    cursor:pointer;
+    opacity:0.8;
+  }
+  #category-page .pencil{
+    color:#444;
+  }
+  #category-page .category_titles{
+    color:#1ab5ff;
+    font-size:2rem;
+    font-family:arial;
+  }
 
-/* task-lists task-detail task-create task-update専用CSS */
-#task-lists,#task-detail,#task-create,#task-update,#login,#logout,#signup{
-  padding-top:45px;
-  z-index:1;
-}
+  /* task-lists task-detail task-create task-update専用CSS */
+  #task-lists,#task-detail,#task-create,#task-update,#login,#logout,#signup{
+    padding-top:45px;
+    z-index:1;
+  }
 
-/* sidebar関連 */
-#task-lists #sidebar,#task-detail #sidebar,#task-update #sidebar,#task-create #sidebar{
-  height:50rem;
-  background:#1e1e1e;
-}
-#task-lists #main-content,#task-detail #main-content,#task-update #main-content,#task-create #main-content{
-  height:100%;
-  padding-bottom:45px;
-}
-#task-lists #sidebar-content,#task-detail #sidebar-content,#task-update #sidebar-content,#task-create #sidebar-content{
-  position:fixed;
-  top:45px;
-  left:0;
-  height:50rem;
-  width:25%;
-  background:#222;
-  border-radius:5px;
-}
-#task-lists #sidebar-content .sidebar-content-title,#task-detail #sidebar-content .sidebar-content-title,#task-update #sidebar-content .sidebar-content-title,#task-create #sidebar-content .sidebar-content-title{
-  text-align:center;
-  border-bottom:1px solid #333;
-}
-#task-lists #sidebar-content .sidebar-content-title h3,#task-detail #sidebar-content .sidebar-content-title h3,#task-update #sidebar-content .sidebar-content-title h3,#task-create #sidebar-content .sidebar-content-title h3{
-  font-size:2rem;
-  /* color:#ddd; */
-  color:#1ab5ff;
-}
-#task-lists #sidebar-content ul,#task-detail #sidebar-content ul,#task-update #sidebar-content ul,#task-create #sidebar-content ul{
-  font-size:1.5rem;
-  color:#ddd;
-  font-family:serif;
-}
-#task-lists #sidebar-content ul .task-select,#task-detail #sidebar-content ul .task-select,#task-update #sidebar-content ul .task-select,#task-create #sidebar-content ul .task-select{
-  opacity:0.6;
-}
-#task-lists .no-padding,#task-detail .no-padding,#task-update .no-padding,#task-create .no-padding{
-  padding:0;
-}
-.sidebar-link-select:hover{
-  color:#ddd;
-  text-decoration:none;
-  opacity:0.4;
-  border-bottom:2px solid #ddd;
-}
-.sidebar-link:hover{
-  color:#ddd;
-  text-decoration:none;
-  opacity:0.8;
-  border-bottom:2px solid #ddd;
-}
-.sidebar-link-select{
-  font-size:1.5rem;
-  color:#ddd;
-  opacity:0.6;
-  font-family:serif;
-}
-.sidebar-link{
-  font-size:1.5rem;
-  color:#ddd;
-  font-family:serif;
-}
-
-
-/* task-lists専用CSS */
-#task-lists .task-title-link{
-  color:#fff;
-  text-decoration:none;
-}
-#task-lists .no-task{
-  /* text-align:center; */
-  padding-top:10px;
-  padding-bottom:5px;
-  position:fixed;
-  bottom:50%;
-  left:55%;
-  width:100%;
-}
-#task-lists .content-box .object{
-  font-size:20px;
-}
+  /* sidebar関連 */
+  #task-lists #sidebar,#task-detail #sidebar,#task-update #sidebar,#task-create #sidebar{
+    height:50rem;
+    background:#1e1e1e;
+  }
+  #task-lists #main-content,#task-detail #main-content,#task-update #main-content,#task-create #main-content{
+    height:100%;
+    padding-bottom:45px;
+  }
+  #task-lists #sidebar-content,#task-detail #sidebar-content,#task-update #sidebar-content,#task-create #sidebar-content{
+    position:fixed;
+    top:45px;
+    left:0;
+    height:50rem;
+    width:25%;
+    background:#222;
+    border-radius:5px;
+  }
+  #task-lists #sidebar-content .sidebar-content-title,#task-detail #sidebar-content .sidebar-content-title,#task-update #sidebar-content .sidebar-content-title,#task-create #sidebar-content .sidebar-content-title{
+    text-align:center;
+    border-bottom:1px solid #333;
+  }
+  #task-lists #sidebar-content .sidebar-content-title h3,#task-detail #sidebar-content .sidebar-content-title h3,#task-update #sidebar-content .sidebar-content-title h3,#task-create #sidebar-content .sidebar-content-title h3{
+    font-size:2rem;
+    /* color:#ddd; */
+    color:#1ab5ff;
+  }
+  #task-lists #sidebar-content ul,#task-detail #sidebar-content ul,#task-update #sidebar-content ul,#task-create #sidebar-content ul{
+    font-size:1.5rem;
+    color:#ddd;
+    font-family:serif;
+  }
+  #task-lists #sidebar-content ul .task-select,#task-detail #sidebar-content ul .task-select,#task-update #sidebar-content ul .task-select,#task-create #sidebar-content ul .task-select{
+    opacity:0.6;
+  }
+  #task-lists .no-padding,#task-detail .no-padding,#task-update .no-padding,#task-create .no-padding{
+    padding:0;
+  }
+  .sidebar-link-select:hover{
+    color:#ddd;
+    text-decoration:none;
+    opacity:0.4;
+    border-bottom:2px solid #ddd;
+  }
+  .sidebar-link:hover{
+    color:#ddd;
+    text-decoration:none;
+    opacity:0.8;
+    border-bottom:2px solid #ddd;
+  }
+  .sidebar-link-select{
+    font-size:1.5rem;
+    color:#ddd;
+    opacity:0.6;
+    font-family:serif;
+  }
+  .sidebar-link{
+    font-size:1.5rem;
+    color:#ddd;
+    font-family:serif;
+  }
 
 
-/* task-detail専用 */
-#task-detail .detail-font{
-  font-size:20px;
-  font-family:arial;
-}
-#task-detail .shortcut-title{
-  font-size:15px;
-  font-family:fantasy;
-}
-#task-detail .shortcut-menu{
-  font-size:15px;
-}
-#task-detail .shortcut-menu li a{
-  color:#1ab5ff;
-  text-decoration:none;
-}
-#task-detail .task-title1{
-  color:#fff;
-}
-#task-detail .task-title2{
-  color:orange;
-}
-#task-detail .task-title3{
-  color:#0048ff;
-}
-#task-detail .modal-font,#list .modal-font{
-  color:#000;
-}
-#task-detail .delete2,#list .delete2{
-  color:#fff;
-}
-#task-detail .delete2:hover,#list .delete2:hover{
-  text-decoration:none;
-  cursor:pointer;
-}
-#task-detail .task-title1,#task-detail .task-title2,#task-detail .task-title3{
-  font-family:arial;
-}
-#task-detail .orange{
-  color:#1ab5ff;
-}
-
-/* task-create専用CSS */
-#task-create input[type='text']{
-  width:70%;
-  color: #fff;
-  background: #1e1e1e;
-  border: none;
-  height: 30px;
-  border-bottom: 2px solid #fff;
-}
-#task-create input[type='text']:focus{
-  outline:none;
-}
-#task-create textarea{
-  width:70%;
-  height:30px;
-  color: #fff;
-  background: #1e1e1e;
-  border: none;
-  line-height: 30px;
-  border-bottom: 2px solid #fff;
-  resize:vertical;
-}
-#task-create input:focus{
-  outline:none;
-}
-#task-create textarea:focus{
-  outline:none;
-}
-#task-create .submit{
-  width:50%;
-  margin-left:50px;
-}
+  /* task-lists専用CSS */
+  #task-lists .task-title-link{
+    color:#fff;
+    text-decoration:none;
+  }
+  #task-lists .no-task{
+    /* text-align:center; */
+    padding-top:10px;
+    padding-bottom:5px;
+    position:fixed;
+    bottom:50%;
+    left:55%;
+    width:100%;
+  }
+  #task-lists .content-box .object{
+    font-size:20px;
+  }
 
 
-/* update専用CSS */
-#task-update input[type='text']{
-  width:70%;
-  color:#fff;
-  background:#1e1e1e;
-  border:none;
-  border-bottom:2px solid #fff;
-  height:30px;
-}
-#task-update input[type='text']:focus{
-  outline:none;
-}
-#task-update textarea{
-  width:70%;
-  color:#fff;
-  background:#1e1e1e;
-  border:none;
-  border-bottom:2px solid #fff;
-  height:30px;
-  line-height:30px;
-  resize:vertical;
-}
-#task-update textarea:focus{
-  outline:none;
-}
-#task-update input:focus{
-  outline:none;
-}
-#task-update .submit{
-  width:50%;
-  margin-left:50px;
-}
+  /* task-detail専用 */
+  #task-detail .detail-font{
+    font-size:20px;
+    font-family:arial;
+  }
+  #task-detail .shortcut-title{
+    font-size:15px;
+    font-family:arial;
+  }
+  #task-detail .shortcut-menu{
+    font-size:15px;
+  }
+  #task-detail .shortcut-menu li a{
+    color:#1ab5ff;
+    text-decoration:none;
+  }
+  #task-detail .task-title1{
+    color:#fff;
+  }
+  #task-detail .task-title2{
+    color:orange;
+  }
+  #task-detail .task-title3{
+    color:#0048ff;
+  }
+  #task-detail .modal-font,#list .modal-font{
+    color:#000;
+  }
+  #task-detail .delete2,#list .delete2{
+    color:#fff;
+  }
+  #task-detail .delete2:hover,#list .delete2:hover{
+    text-decoration:none;
+    cursor:pointer;
+  }
+  #task-detail .task-title1,#task-detail .task-title2,#task-detail .task-title3{
+    font-family:arial;
+  }
+  #task-detail .orange{
+    color:#1ab5ff;
+  }
+
+  /* task-create専用CSS */
+  #task-create input[type='text']{
+    width:70%;
+    color: #fff;
+    background: #1e1e1e;
+    border: none;
+    height: 30px;
+    border-bottom: 2px solid #fff;
+  }
+  #task-create input[type='text']:focus{
+    outline:none;
+  }
+  #task-create textarea{
+    width:70%;
+    height:30px;
+    color: #fff;
+    background: #1e1e1e;
+    border: none;
+    line-height: 30px;
+    border-bottom: 2px solid #fff;
+    resize:vertical;
+  }
+  #task-create input:focus{
+    outline:none;
+  }
+  #task-create textarea:focus{
+    outline:none;
+  }
+  #task-create .submit{
+    width:50%;
+    margin-left:50px;
+  }
+  #task-create .select-box{
+    width: 25%;
+  }
 
 
-/* login,signup専用 */
-#login .login-box{
-  width:33%;
-  height:20rem;
-  border-radius:10px;
-  background:#ddd;
-  color:#333;
-}
-#login .login-box .left,#signup .login-box .left{
-  width:70%;
-  text-align:left;
-  margin:0 auto;
-}
-#login .login-box .center,#signup .login-box .center{
-  text-align:center;
-}
-#login .intext,#signup .intext{
-  width:100%;
-  margin:0 auto;
-}
-#login .labels,#signup .labels{
-  font-size:1rem;
-}
-#login .login-font,#signup .login-font{
-  font-family:sans-serif;
-  color:#ddd;
-}
-#login .save-botton,#signup .save-botton{
-  border:2px solid #ddd;
-  width:50%;
-  background:#888;
-  color:#fff;
-}
-#login .save-botton:hover,#signup .save-botton:hover{
-  border:5px solid #1ab5ff;
-}
+  /* update専用CSS */
+  #task-update input[type='text']{
+    width:70%;
+    color:#fff;
+    background:#1e1e1e;
+    border:none;
+    border-bottom:2px solid #fff;
+    height:30px;
+  }
+  #task-update input[type='text']:focus{
+    outline:none;
+  }
+  #task-update textarea{
+    width:70%;
+    color:#fff;
+    background:#1e1e1e;
+    border:none;
+    border-bottom:2px solid #fff;
+    height:30px;
+    line-height:30px;
+    resize:vertical;
+  }
+  #task-update textarea:focus{
+    outline:none;
+  }
+  #task-update input:focus{
+    outline:none;
+  }
+  #task-update .submit{
+    width:50%;
+    margin-left:50px;
+  }
+  #task-update .select-box{
+    width: 25%;
+  }
 
-/* signup専用 */
-#signup .help-text{
-  color:#ff4949;
-  font-family:serif;
+
+  /* login,signup専用 */
+  #login .login-box{
+    width:33%;
+    height:20rem;
+    border-radius:10px;
+    background:#ddd;
+    color:#333;
+  }
+  #login .login-box .left,#signup .login-box .left{
+    width:70%;
+    text-align:left;
+    margin:0 auto;
+  }
+  #login .login-box .center,#signup .login-box .center{
+    text-align:center;
+  }
+  #login .intext,#signup .intext{
+    width:100%;
+    margin:0 auto;
+  }
+  #login .labels,#signup .labels{
+    font-size:1rem;
+  }
+  #login .login-font,#signup .login-font{
+    font-family:sans-serif;
+    color:#ddd;
+  }
+  #login .save-botton,#signup .save-botton{
+    border:2px solid #ddd;
+    width:50%;
+    background:#888;
+    color:#fff;
+  }
+  #login .save-botton:hover,#signup .save-botton:hover{
+    border:5px solid #1ab5ff;
+  }
+
+  /* signup専用 */
+  #signup .help-text{
+    color:#ff4949;
+    font-family:serif;
+  }
+  #signup .login-box{
+    width:33%;
+    height:37rem;
+    border-radius:10px;
+    background:#ddd;
+    color:#333;
+  }
 }
-#signup .login-box{
-  width:33%;
-  height:37rem;
-  border-radius:10px;
-  background:#ddd;
-  color:#333;
+/* タブレットスマホ対策 */
+@media screen and (max-width:768px){
+  #base #main{
+    width:100%;
+    height:100%;
+    position:relative;
+  }
+  #base .title{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:45px;
+    z-index:2;
+    background-color:#1e1e1e;
+  }
+  #base #menu:hover,#base #close-btn:hover{
+    text-decoration:none;
+    opacity:0.8;
+    cursor:pointer;
+  }
+  #base .click-menu{
+    position:absolute;
+    top:0;
+    right:-300px;
+    transition:0.3s ease-out;
+    height:500px;
+    width:300px;
+    background:#282c2f;
+    border-radius:10px;
+  }
+  #base .click-menu.open{
+    right:0;
+    transition:0.3s ease-out;
+  }
+  #base .menu-content-box{
+    width:100%;
+    height:100px;
+  }
+  #base .menu-content{
+    text-align:right;
+  }
+  #base .menu-content .menu-font{
+    font-size:2.5rem;
+  }
+  #base .menu-content .menu-link{
+    text-decoration:none;
+    color:#eee;
+  }
+  #base .menu-content .menu-link:hover{
+    opacity:0.8;
+  }
+  #base footer{
+    text-align:center;
+    padding:10px 0 5px 0;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background-color:#282c2f;
+    z-index:2;
+  }
+
+
+  /* category_page */
+  #category-page{
+    padding-top:45px;
+    padding-bottom:45px;
+    z-index:1;
+    width:80%;
+    margin:0 auto;
+  }
+  #category-page .card{
+    color:#000;
+    height:25%;
+    background:#ddd;
+    text-align:center;
+    box-shadow: 0 3px 2px #bbb;
+    cursor:pointer;
+    position:relative;
+  }
+  #category-page .card:hover{
+    opacity:0.8;
+  }
+  #category-page .card-title{
+    color:#1e1e1e;
+    font-size:1.1rem;
+    font-weight:bold;
+    font-family:serif;
+  }
+  #category-page .card-text{
+    font-family:sans-serif;
+  }
+  #category-page .card-category-btn{
+    width:50px;
+    position:absolute;
+    top:0;
+    right:0;
+  }
+  #category-page .category-update-font{
+    font-size:45px;
+  }
+  #category-page .category-link{
+    color:#1e1e1e;
+  }
+  #category-page .category-link:hover{
+    text-decoration:none;
+    cursor:pointer;
+    opacity:0.8;
+  }
+  #category-page .pencil{
+    color:#444;
+  }
+  #category-page .category_titles{
+    color:#1ab5ff;
+    font-size:1.5rem;
+    font-family:arial;
+  }
+
+
+  /* task-lists task-detail task-create task-update専用CSS */
+  #task-lists,#task-detail,#task-create,#task-update,#login,#logout,#signup{
+    padding-top:45px;
+    z-index:1;
+  }
+
+  /* sidebar関連 */
+  #task-lists #sidebar,#task-detail #sidebar,#task-update #sidebar,#task-create #sidebar{
+    height:50rem;
+    background:#1e1e1e;
+  }
+  #task-lists #main-content,#task-detail #main-content,#task-update #main-content,#task-create #main-content{
+    height:100%;
+    padding-bottom:45px;
+  }
+  #task-lists #sidebar-content,#task-detail #sidebar-content,#task-update #sidebar-content,#task-create #sidebar-content{
+    position:fixed;
+    top:45px;
+    left:0;
+    height:50rem;
+    width:25%;
+    background:#222;
+    border-radius:5px;
+  }
+  #task-lists #sidebar-content .sidebar-content-title,#task-detail #sidebar-content .sidebar-content-title,#task-update #sidebar-content .sidebar-content-title,#task-create #sidebar-content .sidebar-content-title{
+    text-align:center;
+    border-bottom:1px solid #333;
+  }
+  #task-lists #sidebar-content .sidebar-content-title h3,#task-detail #sidebar-content .sidebar-content-title h3,#task-update #sidebar-content .sidebar-content-title h3,#task-create #sidebar-content .sidebar-content-title h3{
+    font-size:20px;
+    /* color:#ddd; */
+    color:#1ab5ff;
+  }
+  #task-lists #sidebar-content ul,#task-detail #sidebar-content ul,#task-update #sidebar-content ul,#task-create #sidebar-content ul{
+    font-size:1.2rem;
+    color:#ddd;
+    font-family:serif;
+  }
+  #task-lists #sidebar-content ul .task-select,#task-detail #sidebar-content ul .task-select,#task-update #sidebar-content ul .task-select,#task-create #sidebar-content ul .task-select{
+    opacity:0.6;
+  }
+  #task-lists .no-padding,#task-detail .no-padding,#task-update .no-padding,#task-create .no-padding{
+    padding:0;
+  }
+  .sidebar-link-select:hover{
+    color:#ddd;
+    text-decoration:none;
+    opacity:0.4;
+    border-bottom:2px solid #ddd;
+  }
+  .sidebar-link:hover{
+    color:#ddd;
+    text-decoration:none;
+    opacity:0.8;
+    border-bottom:2px solid #ddd;
+  }
+  .sidebar-link-select{
+    font-size:13px;
+    color:#ddd;
+    opacity:0.6;
+    font-family:serif;
+  }
+  .sidebar-link{
+    font-size:13px;
+    color:#ddd;
+    font-family:serif;
+  }
+
+
+  /* task-lists専用CSS */
+  #task-lists .task-title-link{
+    color:#fff;
+    text-decoration:none;
+  }
+  #task-lists .no-task{
+    /* text-align:center; */
+    padding-top:10px;
+    padding-bottom:5px;
+    position:fixed;
+    bottom:50%;
+    left:55%;
+    width:100%;
+  }
+  #task-lists .content-box .object{
+    font-size:20px;
+  }
+  #task-lists .lists_titles{
+    color:#1ab5ff;
+    font-size:1.5rem;
+    font-family:arial;
+  }
+  .no-paddings{
+    padding:0;
+  }
+  /* task-detail専用 */
+  #task-detail .detail-font{
+    font-size:20px;
+    font-family:arial;
+  }
+  #task-detail .shortcut-title{
+    font-size:15px;
+    font-family:arial;
+  }
+  #task-detail .shortcut-menu{
+    font-size:15px;
+  }
+  #task-detail .shortcut-menu li a{
+    color:#1ab5ff;
+    text-decoration:none;
+  }
+  #task-detail .task-title1{
+    font-size:1.3rem;
+    color:#fff;
+  }
+  #task-detail .task-title2{
+    font-size:1.3rem;
+    color:orange;
+  }
+  #task-detail .task-title3{
+    font-size:1.3rem;
+    color:#0048ff;
+  }
+  #task-detail .modal-font,#list .modal-font{
+    color:#000;
+  }
+  #task-detail .delete2,#list .delete2{
+    color:#fff;
+  }
+  #task-detail .delete2:hover,#list .delete2:hover{
+    text-decoration:none;
+    cursor:pointer;
+  }
+  #task-detail .task-title1,#task-detail .task-title2,#task-detail .task-title3{
+    font-family:arial;
+  }
+  #task-detail .orange{
+    color:#1ab5ff;
+  }
+  .no-margins{
+    margin:0;
+  }
+
+  /* task-create/update 専用CSS */
+  #task-create input,#task-update input{
+    width:90%;
+    color: #fff;
+    background: #1e1e1e;
+    border: none;
+    height: 30px;
+    border-bottom: 2px solid #fff;
+  }
+  #task-create input:focus,#task-update input:focus{
+    outline:none;
+  }
+  #task-create textarea,#task-update textarea{
+    width:90%;
+    height:30px;
+    color: #fff;
+    background: #1e1e1e;
+    border: none;
+    line-height: 30px;
+    border-bottom: 2px solid #fff;
+    resize:vertical;
+  }
+  #task-create input:focus,#task-update input:focus{
+    outline:none;
+  }
+  #task-create textarea:focus,#task-update textarea:focus{
+    outline:none;
+  }
+  #task-create .submit,#task-update .submit{
+    width: 50%;
+    margin-left: 50px;
+    background: #ddd;
+    border: 2px solid transparent;
+    line-height: 1.5;
+    color: #333;
+    height: 35px;
+    padding: 6px;
+  }
+  #task-create #content-title,#task-update #content-title{
+    font-size:1.5rem;
+    color:#1ab5ff;
+  }
+  #task-create #explantory-list,#task-update #explantory-list{
+    font-size:.6rem;
+  }
+  #task-create .select-box,#task-update .select-box{
+    width: 30%;
+    font-size: .7rem;
+    height: 30px;
+  }
+
+  /* login,signup専用 */
+  #login .login-box{
+    width:33%;
+    height:20rem;
+    border-radius:10px;
+    background:#ddd;
+    color:#333;
+  }
+  #login .login-box .left,#signup .login-box .left{
+    width:70%;
+    text-align:left;
+    margin:0 auto;
+  }
+  #login .login-box .center,#signup .login-box .center{
+    text-align:center;
+  }
+  #login .intext,#signup .intext{
+    width:100%;
+    margin:0 auto;
+  }
+  #login .labels,#signup .labels{
+    font-size:1rem;
+  }
+  #login .login-font,#signup .login-font{
+    font-family:sans-serif;
+    color:#ddd;
+  }
+  #login .save-botton,#signup .save-botton{
+    border:2px solid #ddd;
+    width:50%;
+    background:#888;
+    color:#fff;
+  }
+  #login .save-botton:hover,#signup .save-botton:hover{
+    border:5px solid #1ab5ff;
+  }
+
+  /* signup専用 */
+  #signup .help-text{
+    color:#ff4949;
+    font-family:serif;
+  }
+  #signup .login-box{
+    width:33%;
+    height:37rem;
+    border-radius:10px;
+    background:#ddd;
+    color:#333;
+  }
+  #signup .bottom-box{
+    margin-bottom:40px;
+  }
 }

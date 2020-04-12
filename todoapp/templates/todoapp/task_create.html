@@ -4,18 +4,18 @@
 
 {% block content %}
 <div id="task-create">
-  <div class="row mt-5">
-    <div id="sidebar" class="col-3"></div>
-    <div id="main-content" class="col-9">
+  <div class="row mt-3 mt-sm-5">
+    <div id="sidebar" class="col-3 col-sm-3"></div>
+    <div id="main-content" class="col-9 col-sm-9">
       <div class="row">
-        <div class="col-4"></div>
-        <div class="col-8">
+        <div class="col-1 col-sm-3"></div>
+        <div class="col-10 col-sm-7">
           <h2 id="content-title">タスク追加</h2>
         </div>
       </div>
       <div class="row mt-3">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-1 col-sm-3"></div>
+        <div class="col-10 col-sm-7">
           <ul id="explantory-list">
             <li>※タイトル、本文は必ず入力してください。</li>
             <li>※状態はデフォルトは新規ですが変えられます。</li>
@@ -23,8 +23,8 @@
         </div>
       </div>
       <div class="row mt-3">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="col-1 col-sm-3"></div>
+        <div class="col-10 col-sm-7">
           <form method="post">
             {% csrf_token %}
             {% load widget_tweaks %}
@@ -34,7 +34,7 @@
             </div>
             <div class="mb-4">
               <label for='id_conditions' class="control-label">状態：</label><br/>
-              {{ form.conditions }}
+              {{ form.conditions |add_class:"form-control select-box" }}
             </div>
             <div class="mb-4">
               <label for='id_content' class="control-label">本文：</label><br/>
@@ -52,7 +52,7 @@
     <div class="sidebar-content-title pb-3 pt-3">
       <h3>Category</h3>
     </div>
-    <ul class="ml-2 mt-3">
+    <ul class="ml-2 mt-3 no-paddings">
       {% for item in categorys %}
         {% if item.pk == category_pk %}
           <li class="pt-2 task-select pl-1"><a class="sidebar-link-select" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>

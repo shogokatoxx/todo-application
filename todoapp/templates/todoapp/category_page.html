@@ -4,12 +4,22 @@
 {% block content %}
 {% load static %}
 <div id="category-page">
+  {% if messages %}
+	 <ul class="messages_ul" style="list-style:none;">
+		   {% for message in messages %}
+			    <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+          </li>
+		   {% endfor %}
+	 </ul>
+  {% endif %}
   <div class="row mt-2">
-    <div class="col-sm-5">
-      <h2 style="color:#1ab5ff; font-size:2rem; font-family:arial;">・カテゴリー選択</h2>
+    <div class="col-7 col-md-5 no-paddings">
+      <h2 class="category_titles">・カテゴリー選択</h2>
     </div>
-    <div class="col-sm-6"></div>
-    <div class="col-sm-1 mt-1">
+    <div class="col-2 col-md-6 no-paddings"></div>
+    <div class="col-3 col-md-1 mt-1 no-paddings">
       <a class="object" style="cursor:pointer;" data-toggle="modal" data-target="#categoryCreUpModal" data-title="追加">➕</a>
     </div>
   </div>

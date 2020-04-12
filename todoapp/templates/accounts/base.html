@@ -3,8 +3,17 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=yes,maximum-scale=2">
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154768561-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-154768561-1');
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,16 +26,16 @@
       <!-- タイトル部分 -->
       <div class="title">
         <div class="row border-bottom border-dark">
-          <div class="col-sm-1"></div>
-          <div class="col-sm-10">
+          <div class="col-1 col-md-1"></div>
+          <div class="col-9 col-md-10">
             <a href="{% url 'todoapp:category_page' %}"><img style="height:45px;" src="{% static 'images/taskchecker.png' %}"></a>
           </div>
-          <div class="col-sm-1 mt-2">
+          <div class="col-2 col-md-1 mt-2">
             <a id="menu"><img src="{% static 'images/menu.png' %}"></a>
             <div class="click-menu">
               <div class="row">
-                <div class="col-7"></div>
-                <div class="col-2 pt-2">
+                <div class="col-7 col-md-7"></div>
+                <div class="col-2 col-md-2 pt-2">
                   <a id="close-btn"><img src="{% static 'images/closebtn.png' %}"></a>
                 </div>
               </div>
@@ -53,7 +62,7 @@
     </div>
 
     <footer>
-      <small>(c)shogokatoxx</small>
+      <small>(c)mahirusan</small>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

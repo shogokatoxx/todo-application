@@ -19,20 +19,20 @@
     <div id="sidebar" class="col-3"></div>
     <div id="main-content" class="col-9">
       <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-4 mt-4">
-          <h2 style="color:#1ab5ff; font-size:2rem; font-family:arial;">・タスク一覧</h2>
+        <div class="col-1 col-sm-1 no-padding"></div>
+        <div class="col-7 col-sm-4 mt-4">
+          <h2 class="lists_titles">・タスク一覧</h2>
         </div>
-        <div class="col-sm-6 no-padding"></div>
-        <div class="col-sm-1 mt-3" style="padding:0;">
+        <div class="col-2 col-sm-6 no-padding"></div>
+        <div class="col-2 col-sm-1 mt-3" style="padding:0;">
           <a class="object mr-3" href="{% url 'todoapp:task_create' category_pk=category_pk %}">➕</a>
         </div>
       </div>
       {% if tasks %}
       {% for item in tasks %}
       <div class="row mt-4 content-box">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-1">
+        <div class="col-1 col-sm-1 no-paddings"></div>
+        <div class="col-2 col-sm-1">
           {% if item.conditions == 1 %}
           <a class="object" href="{% url 'todoapp:conditions_change' category_pk=category_pk task_pk=item.pk %}">⚪️</a>
           {% endif %}
@@ -44,7 +44,7 @@
           {% endif %}
         </div>
 
-        <div class="col-sm-9 border-bottom border-dark">
+        <div class="col-7 col-sm-8 border-bottom border-dark">
           {% if item.conditions == 1 %}
           <a href="{% url 'todoapp:task_detail' category_pk=category_pk task_pk=item.pk %}" class="task-title-link">{{ item.title }} (新規)</a>
           {% endif %}
@@ -55,7 +55,7 @@
           <a href="{% url 'todoapp:task_detail' category_pk=category_pk task_pk=item.pk %}" class="task-title-link">{{ item.title }}</a>
           {% endif %}
         </div>
-        <div class="col-sm-1 border-bottom border-dark">
+        <div class="col-2 col-sm-2 border-bottom border-dark">
           <a style="cursor:pointer;" data-toggle="modal" data-target="#testModal" data-deletepk="{{ category_pk }}-{{ item.pk }}">🗑</a>
         </div>
       </div>
@@ -85,9 +85,9 @@
   </div>
   <div id="sidebar-content">
     <div class="sidebar-content-title pb-3 pt-3">
-      <h3>Category</h3>
+      <h3 class="lists_titles">Category</h3>
     </div>
-    <ul class="ml-2 mt-3">
+    <ul class="ml-2 mt-3 no-paddings">
       {% for item in categorys %}
         {% if item.pk == category_pk %}
           <li class="pt-2 task-select pl-1"><a class="sidebar-link-select" href="{% url 'todoapp:task_lists' category_pk=item.pk %}">{{ item.text }}</a></li>
